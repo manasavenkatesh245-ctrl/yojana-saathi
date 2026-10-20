@@ -3,7 +3,7 @@
 **An AI agent that finds the government schemes a citizen qualifies for, explains why, and gets them ready to apply.**
 BharatAgentic Hackathon, powered by aiKart. Track: **Citizen & GovTech**.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fbipinjr%2FYoajana-Saathi&env=GROQ_API_KEY&envDescription=Free%20key%20from%20console.groq.com%20(optional%3A%20without%20it%20the%20agent%20runs%20in%20offline%20mode)&envLink=https%3A%2F%2Fconsole.groq.com%2Fkeys&project-name=yojana-saathi)
+[![Deploy with Vercel]https://yojana-saathi-pi.vercel.app/
 
 **At a glance:** 10 Indian languages · text, voice or a document photo · 5-tool agent on Groq's free tier with automatic fallback to offline rules · deterministic eligibility engine over 27 central schemes · printable application drafts · works on phones and laptops · no login, nothing stored.
 
