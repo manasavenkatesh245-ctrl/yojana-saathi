@@ -1,0 +1,574 @@
+[
+  {
+    "id": "pm-kisan",
+    "name": "PM-KISAN",
+    "name_hi": "पीएम-किसान सम्मान निधि",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "category": "agriculture",
+    "summary": "Direct income support for land-holding farmer families.",
+    "benefit": "₹6,000 a year, paid in three instalments of ₹2,000 straight to the bank account.",
+    "cashValue": 6000,
+    "cashPeriod": "year",
+    "rules": {
+      "all": [
+        { "field": "occupation", "op": "eq", "value": "farmer", "label": "Works as a farmer" },
+        { "field": "ownsLand", "op": "true", "label": "Family owns cultivable land in their name" },
+        { "field": "paysIncomeTax", "op": "false", "label": "No family member paid income tax last year" },
+        { "field": "isGovtEmployee", "op": "false", "label": "Not a serving or retired government employee" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Land ownership record (khatauni / 7-12 / patta)", "Bank account linked with Aadhaar", "Mobile number"],
+    "howToApply": ["Register on pmkisan.gov.in under 'New Farmer Registration', or visit a Common Service Centre (CSC).", "Complete e-KYC with Aadhaar OTP or biometrics.", "The state verifies land records before the first instalment."],
+    "applyUrl": "https://pmkisan.gov.in",
+    "source": "https://pmkisan.gov.in"
+  },
+  {
+    "id": "pm-jay",
+    "name": "Ayushman Bharat PM-JAY",
+    "name_hi": "आयुष्मान भारत पीएम-जय",
+    "ministry": "Ministry of Health & Family Welfare (NHA)",
+    "category": "health",
+    "summary": "Free hospital treatment for poor and vulnerable families.",
+    "benefit": "Cashless hospital cover of ₹5 lakh per family per year at empanelled public and private hospitals.",
+    "coverage": "₹5,00,000 per family per year",
+    "rules": {
+      "all": [],
+      "anyOf": [
+        { "field": "bpl", "op": "true", "label": "Holds a BPL / Antyodaya / priority ration card" },
+        { "field": "ownsPuccaHouse", "op": "false", "label": "Lives in a kutcha (non-permanent) house" },
+        { "field": "category", "op": "in", "value": ["sc", "st"], "label": "SC or ST household" },
+        { "field": "occupation", "op": "in", "value": ["agri_labourer", "unorganised_worker", "street_vendor"], "label": "Landless or casual manual labour household" }
+      ]
+    },
+    "verifyNote": "Final eligibility is matched against the SECC-2011 / state beneficiary list at the Ayushman card counter.",
+    "documents": ["Aadhaar card", "Ration card", "Mobile number"],
+    "howToApply": ["Check your name on beneficiary.nha.gov.in or the Ayushman app.", "Get your Ayushman card made at a CSC, empanelled hospital (Arogya Mitra) or via the app with Aadhaar e-KYC."],
+    "applyUrl": "https://beneficiary.nha.gov.in",
+    "source": "https://pmjay.gov.in"
+  },
+  {
+    "id": "ab-vay-vandana",
+    "name": "Ayushman Vay Vandana (70+)",
+    "name_hi": "आयुष्मान वय वंदना (70+)",
+    "ministry": "Ministry of Health & Family Welfare (NHA)",
+    "category": "health",
+    "summary": "Health cover for every senior citizen aged 70 or above, regardless of income.",
+    "benefit": "₹5 lakh a year cashless hospital cover for senior citizens aged 70+, on top of any existing family cover.",
+    "coverage": "₹5,00,000 per year (senior's own top-up)",
+    "rules": {
+      "all": [
+        { "field": "age", "op": "gte", "value": 70, "label": "Aged 70 or above" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Mobile number"],
+    "howToApply": ["Enrol on the Ayushman app or beneficiary.nha.gov.in using Aadhaar e-KYC.", "Or visit any empanelled hospital or CSC."],
+    "applyUrl": "https://beneficiary.nha.gov.in",
+    "source": "https://pmjay.gov.in"
+  },
+  {
+    "id": "nsap-old-age",
+    "name": "Indira Gandhi National Old Age Pension (NSAP)",
+    "name_hi": "इंदिरा गांधी राष्ट्रीय वृद्धावस्था पेंशन",
+    "ministry": "Ministry of Rural Development",
+    "category": "pension",
+    "summary": "Monthly pension for elderly people from BPL households.",
+    "benefit": "Central share of ₹200 a month (age 60–79) or ₹500 a month (80+). Most states add their own top-up.",
+    "cashValue": 2400,
+    "cashPeriod": "year",
+    "cashNote": "Central share only; your state usually pays more.",
+    "rules": {
+      "all": [
+        { "field": "age", "op": "gte", "value": 60, "label": "Aged 60 or above" },
+        { "field": "bpl", "op": "true", "label": "Belongs to a BPL household" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Age proof", "BPL / ration card", "Bank or post office account", "Passport photo"],
+    "howToApply": ["Apply at the Gram Panchayat / Block office (rural) or municipal office (urban), or through your state's social welfare portal.", "Many states accept applications at CSCs."],
+    "applyUrl": "https://nsap.nic.in",
+    "source": "https://nsap.nic.in"
+  },
+  {
+    "id": "nsap-widow",
+    "name": "Indira Gandhi National Widow Pension (NSAP)",
+    "name_hi": "इंदिरा गांधी राष्ट्रीय विधवा पेंशन",
+    "ministry": "Ministry of Rural Development",
+    "category": "pension",
+    "summary": "Monthly pension for widows from BPL households.",
+    "benefit": "Central share of ₹300 a month. States add their own amount.",
+    "cashValue": 3600,
+    "cashPeriod": "year",
+    "cashNote": "Central share only; your state usually pays more.",
+    "rules": {
+      "all": [
+        { "field": "gender", "op": "eq", "value": "female", "label": "Woman" },
+        { "field": "maritalStatus", "op": "eq", "value": "widowed", "label": "Widowed" },
+        { "field": "age", "op": "gte", "value": 40, "label": "Aged 40 or above" },
+        { "field": "age", "op": "lte", "value": 79, "label": "Aged 79 or below" },
+        { "field": "bpl", "op": "true", "label": "Belongs to a BPL household" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Husband's death certificate", "Age proof", "BPL / ration card", "Bank or post office account"],
+    "howToApply": ["Apply at the Gram Panchayat / Block office or municipal office, or your state's social welfare portal.", "Many states accept applications at CSCs."],
+    "applyUrl": "https://nsap.nic.in",
+    "source": "https://nsap.nic.in"
+  },
+  {
+    "id": "nsap-disability",
+    "name": "Indira Gandhi National Disability Pension (NSAP)",
+    "name_hi": "इंदिरा गांधी राष्ट्रीय दिव्यांग पेंशन",
+    "ministry": "Ministry of Rural Development",
+    "category": "pension",
+    "summary": "Monthly pension for people with severe disability from BPL households.",
+    "benefit": "Central share of ₹300 a month. States add their own amount.",
+    "cashValue": 3600,
+    "cashPeriod": "year",
+    "cashNote": "Central share only; your state usually pays more.",
+    "rules": {
+      "all": [
+        { "field": "disabilityPercent", "op": "gte", "value": 80, "label": "Disability of 80% or more" },
+        { "field": "age", "op": "gte", "value": 18, "label": "Aged 18 or above" },
+        { "field": "age", "op": "lte", "value": 79, "label": "Aged 79 or below" },
+        { "field": "bpl", "op": "true", "label": "Belongs to a BPL household" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Disability certificate / UDID card", "BPL / ration card", "Bank or post office account"],
+    "howToApply": ["Apply at the Block / municipal social welfare office or state portal.", "Get a UDID card at swavlambancard.gov.in if you don't have one."],
+    "applyUrl": "https://nsap.nic.in",
+    "source": "https://nsap.nic.in"
+  },
+  {
+    "id": "pm-ujjwala",
+    "name": "PM Ujjwala Yojana",
+    "name_hi": "प्रधानमंत्री उज्ज्वला योजना",
+    "ministry": "Ministry of Petroleum & Natural Gas",
+    "category": "women_child",
+    "summary": "Free LPG connection for women from poor households.",
+    "benefit": "Deposit-free LPG connection with first refill and stove, plus a targeted subsidy on refills paid to the bank account.",
+    "rules": {
+      "all": [
+        { "field": "gender", "op": "eq", "value": "female", "label": "Adult woman applicant" },
+        { "field": "age", "op": "gte", "value": 18, "label": "Aged 18 or above" },
+        { "field": "hasLpg", "op": "false", "label": "No LPG connection in the household" }
+      ],
+      "anyOf": [
+        { "field": "bpl", "op": "true", "label": "BPL / Antyodaya ration card" },
+        { "field": "category", "op": "in", "value": ["sc", "st"], "label": "SC or ST household" },
+        { "field": "ownsPuccaHouse", "op": "false", "label": "Lives in a kutcha house (PMAY-G category)" }
+      ]
+    },
+    "documents": ["Aadhaar of applicant and adult family members", "Ration card", "Bank account details", "KYC form (from distributor or pmuy.gov.in)"],
+    "howToApply": ["Apply online at pmuy.gov.in or at the nearest LPG distributor (Indane, Bharat Gas, HP Gas)."],
+    "applyUrl": "https://pmuy.gov.in",
+    "source": "https://pmuy.gov.in"
+  },
+  {
+    "id": "pmay-g",
+    "name": "PM Awas Yojana – Gramin",
+    "name_hi": "प्रधानमंत्री आवास योजना – ग्रामीण",
+    "ministry": "Ministry of Rural Development",
+    "category": "housing",
+    "summary": "Money to build a pucca house for rural families who don't have one.",
+    "benefit": "₹1.2 lakh (plains) or ₹1.3 lakh (hilly / difficult areas) to build a pucca house, plus MGNREGA wage days and toilet support.",
+    "rules": {
+      "all": [
+        { "field": "area", "op": "eq", "value": "rural", "label": "Lives in a rural area" },
+        { "field": "ownsPuccaHouse", "op": "false", "label": "Family has no pucca house" }
+      ]
+    },
+    "verifyNote": "Beneficiaries are selected from the Awaas+ survey and approved by the Gram Sabha.",
+    "documents": ["Aadhaar card", "Bank account", "MGNREGA job card", "Swachh Bharat Mission (SBM) number, if any"],
+    "howToApply": ["Ask at the Gram Panchayat to be included in the Awaas+ survey / list.", "Track status on pmayg.dord.gov.in."],
+    "applyUrl": "https://pmayg.dord.gov.in",
+    "source": "https://pmayg.dord.gov.in"
+  },
+  {
+    "id": "pmay-u",
+    "name": "PM Awas Yojana – Urban 2.0",
+    "name_hi": "प्रधानमंत्री आवास योजना – शहरी 2.0",
+    "ministry": "Ministry of Housing & Urban Affairs",
+    "category": "housing",
+    "summary": "Help to build, buy or rent a house for urban EWS, LIG and MIG families.",
+    "benefit": "About ₹2.5 lakh per house (central + state share) to build or buy, or an interest subsidy on a home loan.",
+    "rules": {
+      "all": [
+        { "field": "area", "op": "eq", "value": "urban", "label": "Lives in an urban area" },
+        { "field": "ownsPuccaHouse", "op": "false", "label": "No pucca house anywhere in India in the family's name" },
+        { "field": "annualIncome", "op": "lte", "value": 900000, "label": "Household income up to ₹9 lakh a year" }
+      ]
+    },
+    "documents": ["Aadhaar of all family members", "Income certificate", "Bank account", "Land documents (if building on own land)"],
+    "howToApply": ["Apply on pmay-urban.gov.in or at your Urban Local Body (municipality) office."],
+    "applyUrl": "https://pmay-urban.gov.in",
+    "source": "https://pmay-urban.gov.in"
+  },
+  {
+    "id": "pm-jan-dhan",
+    "name": "PM Jan Dhan Yojana",
+    "name_hi": "प्रधानमंत्री जन धन योजना",
+    "ministry": "Ministry of Finance",
+    "category": "finance",
+    "summary": "A free zero-balance bank account for anyone who doesn't have one.",
+    "benefit": "Zero-balance savings account with RuPay card, ₹2 lakh accident insurance, and overdraft up to ₹10,000 for eligible holders.",
+    "rules": {
+      "all": [
+        { "field": "hasBankAccount", "op": "false", "label": "Does not have a bank account" },
+        { "field": "age", "op": "gte", "value": 10, "label": "Aged 10 or above" }
+      ]
+    },
+    "documents": ["Aadhaar card (or any officially valid ID)", "Passport photo"],
+    "howToApply": ["Visit any bank branch or Bank Mitra (business correspondent) and ask for a Jan Dhan account."],
+    "applyUrl": "https://pmjdy.gov.in",
+    "source": "https://pmjdy.gov.in"
+  },
+  {
+    "id": "pmjjby",
+    "name": "PM Jeevan Jyoti Bima Yojana",
+    "name_hi": "प्रधानमंत्री जीवन ज्योति बीमा योजना",
+    "ministry": "Ministry of Finance",
+    "category": "insurance",
+    "summary": "Low-cost life insurance through your bank account.",
+    "benefit": "₹2 lakh life cover for ₹436 a year, auto-debited from your bank account.",
+    "coverage": "₹2,00,000 life cover",
+    "rules": {
+      "all": [
+        { "field": "age", "op": "gte", "value": 18, "label": "Aged 18 or above" },
+        { "field": "age", "op": "lte", "value": 50, "label": "Aged 50 or below (to join)" },
+        { "field": "hasBankAccount", "op": "true", "label": "Has a bank or post office account" }
+      ]
+    },
+    "documents": ["Bank account", "Aadhaar card", "Consent-cum-declaration form"],
+    "howToApply": ["Enrol at your bank branch, net banking, or the Jan Suraksha portal."],
+    "applyUrl": "https://jansuraksha.gov.in",
+    "source": "https://jansuraksha.gov.in"
+  },
+  {
+    "id": "pmsby",
+    "name": "PM Suraksha Bima Yojana",
+    "name_hi": "प्रधानमंत्री सुरक्षा बीमा योजना",
+    "ministry": "Ministry of Finance",
+    "category": "insurance",
+    "summary": "Accident insurance for ₹20 a year.",
+    "benefit": "₹2 lakh cover for accidental death or full disability (₹1 lakh partial) for ₹20 a year.",
+    "coverage": "₹2,00,000 accident cover",
+    "rules": {
+      "all": [
+        { "field": "age", "op": "gte", "value": 18, "label": "Aged 18 or above" },
+        { "field": "age", "op": "lte", "value": 70, "label": "Aged 70 or below" },
+        { "field": "hasBankAccount", "op": "true", "label": "Has a bank or post office account" }
+      ]
+    },
+    "documents": ["Bank account", "Aadhaar card", "Consent-cum-declaration form"],
+    "howToApply": ["Enrol at your bank branch, net banking, or the Jan Suraksha portal."],
+    "applyUrl": "https://jansuraksha.gov.in",
+    "source": "https://jansuraksha.gov.in"
+  },
+  {
+    "id": "atal-pension",
+    "name": "Atal Pension Yojana",
+    "name_hi": "अटल पेंशन योजना",
+    "ministry": "Ministry of Finance (PFRDA)",
+    "category": "pension",
+    "summary": "A guaranteed pension at 60 for small monthly contributions.",
+    "benefit": "Guaranteed pension of ₹1,000–₹5,000 a month from age 60, depending on what you contribute.",
+    "rules": {
+      "all": [
+        { "field": "age", "op": "gte", "value": 18, "label": "Aged 18 or above" },
+        { "field": "age", "op": "lte", "value": 40, "label": "Aged 40 or below (to join)" },
+        { "field": "hasBankAccount", "op": "true", "label": "Has a bank account" },
+        { "field": "paysIncomeTax", "op": "false", "label": "Not an income tax payer" }
+      ]
+    },
+    "documents": ["Bank account", "Aadhaar card", "Mobile number"],
+    "howToApply": ["Enrol at your bank branch or post office, or through net banking."],
+    "applyUrl": "https://jansuraksha.gov.in",
+    "source": "https://www.pfrda.org.in"
+  },
+  {
+    "id": "mgnrega",
+    "name": "MGNREGA",
+    "name_hi": "मनरेगा",
+    "ministry": "Ministry of Rural Development",
+    "category": "employment",
+    "summary": "Guaranteed paid work for rural households.",
+    "benefit": "Up to 100 days of paid unskilled work a year per household at the state-notified wage, paid to the bank account.",
+    "rules": {
+      "all": [
+        { "field": "area", "op": "eq", "value": "rural", "label": "Lives in a rural area" },
+        { "field": "age", "op": "gte", "value": 18, "label": "Adult member willing to do unskilled work" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Passport photo", "Bank or post office account"],
+    "howToApply": ["Apply for a job card at the Gram Panchayat (written or oral request).", "Ask for work in writing; work must be given within 15 days."],
+    "applyUrl": "https://nrega.dord.gov.in",
+    "source": "https://nrega.dord.gov.in"
+  },
+  {
+    "id": "sukanya-samriddhi",
+    "name": "Sukanya Samriddhi Yojana",
+    "name_hi": "सुकन्या समृद्धि योजना",
+    "ministry": "Ministry of Finance",
+    "category": "women_child",
+    "summary": "A high-interest savings account for a girl child.",
+    "benefit": "Savings account for a daughter under 10 with government-set interest (reviewed quarterly); tax-free maturity at 21.",
+    "rules": {
+      "all": [
+        { "field": "hasDaughterUnder10", "op": "true", "label": "Has a daughter under 10 years" }
+      ]
+    },
+    "documents": ["Girl's birth certificate", "Parent / guardian Aadhaar and address proof", "Passport photos"],
+    "howToApply": ["Open the account at any post office or authorised bank branch with a minimum ₹250 deposit."],
+    "applyUrl": "https://www.nsiindia.gov.in",
+    "source": "https://www.nsiindia.gov.in"
+  },
+  {
+    "id": "pm-mudra",
+    "name": "PM Mudra Yojana",
+    "name_hi": "प्रधानमंत्री मुद्रा योजना",
+    "ministry": "Ministry of Finance",
+    "category": "business",
+    "summary": "Collateral-free loans for small non-farm businesses.",
+    "benefit": "Collateral-free business loans: Shishu up to ₹50,000, Kishore up to ₹5 lakh, Tarun up to ₹10 lakh, Tarun Plus up to ₹20 lakh.",
+    "rules": {
+      "all": [
+        { "field": "age", "op": "gte", "value": 18, "label": "Aged 18 or above" }
+      ],
+      "anyOf": [
+        { "field": "occupation", "op": "in", "value": ["small_business", "street_vendor", "artisan"], "label": "Runs a small business, shop or trade" },
+        { "field": "wantsToStartBusiness", "op": "true", "label": "Plans to start a small business" }
+      ]
+    },
+    "documents": ["Aadhaar and PAN", "Business plan or proof of business", "Bank statement", "Quotation for machinery / stock"],
+    "howToApply": ["Apply at any bank, NBFC or MFI, or online at jansamarth.in."],
+    "applyUrl": "https://www.jansamarth.in",
+    "source": "https://www.mudra.org.in"
+  },
+  {
+    "id": "pm-vishwakarma",
+    "name": "PM Vishwakarma",
+    "name_hi": "पीएम विश्वकर्मा",
+    "ministry": "Ministry of MSME",
+    "category": "business",
+    "summary": "Support for traditional artisans and craftspeople in 18 trades.",
+    "benefit": "Training with ₹500/day stipend, ₹15,000 toolkit e-voucher, collateral-free loans of ₹1 lakh then ₹2 lakh at 5% interest, and a PM Vishwakarma certificate.",
+    "rules": {
+      "all": [
+        { "field": "occupation", "op": "eq", "value": "artisan", "label": "Works as a traditional artisan (carpenter, potter, tailor, blacksmith, etc.)" },
+        { "field": "age", "op": "gte", "value": 18, "label": "Aged 18 or above" },
+        { "field": "isGovtEmployee", "op": "false", "label": "No family member in government service" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Mobile number linked to Aadhaar", "Bank account", "Ration card"],
+    "howToApply": ["Register through a Common Service Centre (CSC) on pmvishwakarma.gov.in.", "Verification is done by the Gram Panchayat / ULB, then district and state committees."],
+    "applyUrl": "https://pmvishwakarma.gov.in",
+    "source": "https://pmvishwakarma.gov.in"
+  },
+  {
+    "id": "pm-svanidhi",
+    "name": "PM SVANidhi",
+    "name_hi": "पीएम स्वनिधि",
+    "ministry": "Ministry of Housing & Urban Affairs",
+    "category": "business",
+    "summary": "Working-capital loans for street vendors.",
+    "benefit": "Collateral-free loans of ₹15,000, then ₹25,000, then ₹50,000, with an interest subsidy and cashback on digital payments.",
+    "rules": {
+      "all": [
+        { "field": "occupation", "op": "eq", "value": "street_vendor", "label": "Works as a street vendor / hawker" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Vending certificate or Letter of Recommendation from the ULB", "Bank account", "Mobile number"],
+    "howToApply": ["Apply on pmsvanidhi.mohua.gov.in, via a CSC, or at a bank branch."],
+    "applyUrl": "https://pmsvanidhi.mohua.gov.in",
+    "source": "https://pmsvanidhi.mohua.gov.in"
+  },
+  {
+    "id": "post-matric-sc",
+    "name": "Post-Matric Scholarship for SC Students",
+    "name_hi": "अनुसूचित जाति छात्रों हेतु पोस्ट-मैट्रिक छात्रवृत्ति",
+    "ministry": "Ministry of Social Justice & Empowerment",
+    "category": "education",
+    "summary": "Fees and allowance for SC students studying beyond Class 10.",
+    "benefit": "Compulsory fees reimbursed plus a monthly maintenance allowance, from Class 11 up to PhD.",
+    "rules": {
+      "all": [
+        { "field": "occupation", "op": "eq", "value": "student", "label": "Currently a student" },
+        { "field": "educationLevel", "op": "in", "value": ["post_matric", "graduate"], "label": "Studying in Class 11 or above" },
+        { "field": "category", "op": "eq", "value": "sc", "label": "Belongs to a Scheduled Caste" },
+        { "field": "annualIncome", "op": "lte", "value": 250000, "label": "Family income up to ₹2.5 lakh a year" }
+      ]
+    },
+    "documents": ["Caste certificate", "Income certificate", "Aadhaar card", "Previous marksheet", "Fee receipt", "Bank account"],
+    "howToApply": ["Apply on the National Scholarship Portal (scholarships.gov.in) or your state scholarship portal before the deadline."],
+    "applyUrl": "https://scholarships.gov.in",
+    "source": "https://scholarships.gov.in"
+  },
+  {
+    "id": "post-matric-st",
+    "name": "Post-Matric Scholarship for ST Students",
+    "name_hi": "अनुसूचित जनजाति छात्रों हेतु पोस्ट-मैट्रिक छात्रवृत्ति",
+    "ministry": "Ministry of Tribal Affairs",
+    "category": "education",
+    "summary": "Fees and allowance for ST students studying beyond Class 10.",
+    "benefit": "Compulsory fees reimbursed plus a maintenance allowance for post-matric courses.",
+    "rules": {
+      "all": [
+        { "field": "occupation", "op": "eq", "value": "student", "label": "Currently a student" },
+        { "field": "educationLevel", "op": "in", "value": ["post_matric", "graduate"], "label": "Studying in Class 11 or above" },
+        { "field": "category", "op": "eq", "value": "st", "label": "Belongs to a Scheduled Tribe" },
+        { "field": "annualIncome", "op": "lte", "value": 250000, "label": "Family income up to ₹2.5 lakh a year" }
+      ]
+    },
+    "documents": ["Tribe certificate", "Income certificate", "Aadhaar card", "Previous marksheet", "Fee receipt", "Bank account"],
+    "howToApply": ["Apply on scholarships.gov.in or your state's tribal welfare scholarship portal."],
+    "applyUrl": "https://scholarships.gov.in",
+    "source": "https://tribal.nic.in"
+  },
+  {
+    "id": "central-sector-scholarship",
+    "name": "Central Sector Scholarship for College Students",
+    "name_hi": "केंद्रीय क्षेत्र छात्रवृत्ति (कॉलेज/विश्वविद्यालय)",
+    "ministry": "Ministry of Education",
+    "category": "education",
+    "summary": "Merit scholarship for college students from lower-income families.",
+    "benefit": "₹12,000 a year during graduation (first three years) and ₹20,000 a year at postgraduate level.",
+    "cashValue": 12000,
+    "cashPeriod": "year",
+    "rules": {
+      "all": [
+        { "field": "occupation", "op": "eq", "value": "student", "label": "Currently a student" },
+        { "field": "educationLevel", "op": "eq", "value": "graduate", "label": "Enrolled in a regular college / university course" },
+        { "field": "class12Top20", "op": "true", "label": "Scored above the 80th percentile in Class 12 board" },
+        { "field": "annualIncome", "op": "lte", "value": 450000, "label": "Family income up to ₹4.5 lakh a year" }
+      ]
+    },
+    "documents": ["Class 12 marksheet", "Income certificate", "College enrolment proof", "Aadhaar card", "Bank account"],
+    "howToApply": ["Apply on the National Scholarship Portal (scholarships.gov.in) during the open window."],
+    "applyUrl": "https://scholarships.gov.in",
+    "source": "https://scholarships.gov.in"
+  },
+  {
+    "id": "pmmvy",
+    "name": "PM Matru Vandana Yojana",
+    "name_hi": "प्रधानमंत्री मातृ वंदना योजना",
+    "ministry": "Ministry of Women & Child Development",
+    "category": "women_child",
+    "summary": "Cash support for pregnant women and new mothers.",
+    "benefit": "₹5,000 in instalments for the first child, and ₹6,000 for a second child if it is a girl.",
+    "cashValue": 5000,
+    "cashPeriod": "once",
+    "rules": {
+      "all": [
+        { "field": "gender", "op": "eq", "value": "female", "label": "Woman" },
+        { "field": "isPregnant", "op": "true", "label": "Pregnant or recently delivered" },
+        { "field": "isGovtEmployee", "op": "false", "label": "Not in regular government employment" }
+      ]
+    },
+    "documents": ["Aadhaar card", "MCP (Mother & Child Protection) card", "Bank / post office account", "Mobile number"],
+    "howToApply": ["Register through your Anganwadi worker or ASHA, or on pmmvy.wcd.gov.in."],
+    "applyUrl": "https://pmmvy.wcd.gov.in",
+    "source": "https://wcd.gov.in"
+  },
+  {
+    "id": "pmfby",
+    "name": "PM Fasal Bima Yojana",
+    "name_hi": "प्रधानमंत्री फसल बीमा योजना",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "category": "agriculture",
+    "summary": "Low-premium crop insurance, including for tenant farmers.",
+    "benefit": "Crop insurance at just 2% premium (kharif), 1.5% (rabi) or 5% (commercial / horticulture); the government pays the rest.",
+    "rules": {
+      "all": [
+        { "field": "occupation", "op": "eq", "value": "farmer", "label": "Grows crops (owner, tenant or sharecropper)" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Bank account", "Land record or tenancy / sowing certificate", "Sowing declaration"],
+    "howToApply": ["Enrol on pmfby.gov.in, at a CSC, bank, or insurance agent before the season's cut-off date."],
+    "applyUrl": "https://pmfby.gov.in",
+    "source": "https://pmfby.gov.in"
+  },
+  {
+    "id": "kisan-credit-card",
+    "name": "Kisan Credit Card",
+    "name_hi": "किसान क्रेडिट कार्ड",
+    "ministry": "Ministry of Agriculture & Farmers Welfare",
+    "category": "agriculture",
+    "summary": "Cheap crop and working-capital credit for farmers and fishers.",
+    "benefit": "Revolving credit for farming needs; with interest subvention the effective rate is about 4% on loans up to ₹5 lakh repaid on time.",
+    "rules": {
+      "all": [
+        { "field": "occupation", "op": "in", "value": ["farmer", "fisher"], "label": "Farmer, fisher or animal-husbandry worker" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Land record or tenancy proof", "Passport photo", "KCC application form"],
+    "howToApply": ["Apply at any bank branch; PM-KISAN beneficiaries can use the simplified KCC form on pmkisan.gov.in."],
+    "applyUrl": "https://pmkisan.gov.in",
+    "source": "https://pmkisan.gov.in"
+  },
+  {
+    "id": "stand-up-india",
+    "name": "Stand-Up India",
+    "name_hi": "स्टैंड-अप इंडिया",
+    "ministry": "Ministry of Finance (SIDBI)",
+    "category": "business",
+    "summary": "Bank loans for women and SC/ST entrepreneurs starting a new business.",
+    "benefit": "Bank loans from ₹10 lakh to ₹1 crore for a new (greenfield) enterprise in manufacturing, services, trading or agri-allied activity.",
+    "rules": {
+      "all": [
+        { "field": "age", "op": "gte", "value": 18, "label": "Aged 18 or above" },
+        { "field": "wantsToStartBusiness", "op": "true", "label": "Starting a new business" }
+      ],
+      "anyOf": [
+        { "field": "gender", "op": "eq", "value": "female", "label": "Woman entrepreneur" },
+        { "field": "category", "op": "in", "value": ["sc", "st"], "label": "SC or ST entrepreneur" }
+      ]
+    },
+    "documents": ["Aadhaar and PAN", "Caste certificate (if SC/ST)", "Project report", "Address proof", "Bank statement"],
+    "howToApply": ["Apply on standupmitra.in or at a bank branch."],
+    "applyUrl": "https://www.standupmitra.in",
+    "source": "https://www.standupmitra.in"
+  },
+  {
+    "id": "pm-sym",
+    "name": "PM Shram Yogi Maandhan",
+    "name_hi": "प्रधानमंत्री श्रम योगी मानधन",
+    "ministry": "Ministry of Labour & Employment",
+    "category": "pension",
+    "summary": "Pension for unorganised workers earning up to ₹15,000 a month.",
+    "benefit": "₹3,000 a month pension from age 60. You pay ₹55–₹200 a month (by age); the government matches it.",
+    "rules": {
+      "all": [
+        { "field": "age", "op": "gte", "value": 18, "label": "Aged 18 or above" },
+        { "field": "age", "op": "lte", "value": 40, "label": "Aged 40 or below (to join)" },
+        { "field": "occupation", "op": "in", "value": ["unorganised_worker", "agri_labourer", "street_vendor", "artisan", "fisher", "farmer"], "label": "Works in the unorganised sector" },
+        { "field": "annualIncome", "op": "lte", "value": 180000, "label": "Earns up to ₹15,000 a month" },
+        { "field": "inEpfoOrEsic", "op": "false", "label": "Not covered by EPFO / ESIC / NPS" },
+        { "field": "paysIncomeTax", "op": "false", "label": "Not an income tax payer" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Bank account with IFSC", "Mobile number"],
+    "howToApply": ["Enrol at a Common Service Centre or on maandhan.in."],
+    "applyUrl": "https://maandhan.in",
+    "source": "https://maandhan.in"
+  },
+  {
+    "id": "e-shram",
+    "name": "e-Shram Card",
+    "name_hi": "ई-श्रम कार्ड",
+    "ministry": "Ministry of Labour & Employment",
+    "category": "employment",
+    "summary": "National registration for unorganised workers.",
+    "benefit": "e-Shram card with a Universal Account Number, a gateway to social security schemes and accident cover under PMSBY.",
+    "rules": {
+      "all": [
+        { "field": "age", "op": "gte", "value": 16, "label": "Aged 16 or above" },
+        { "field": "age", "op": "lte", "value": 59, "label": "Aged 59 or below" },
+        { "field": "occupation", "op": "in", "value": ["unorganised_worker", "agri_labourer", "street_vendor", "artisan", "fisher", "farmer", "homemaker"], "label": "Works in the unorganised sector" },
+        { "field": "inEpfoOrEsic", "op": "false", "label": "Not a member of EPFO / ESIC" },
+        { "field": "paysIncomeTax", "op": "false", "label": "Not an income tax payer" }
+      ]
+    },
+    "documents": ["Aadhaar card", "Mobile number linked to Aadhaar", "Bank account"],
+    "howToApply": ["Self-register on eshram.gov.in with Aadhaar OTP, or visit a CSC."],
+    "applyUrl": "https://eshram.gov.in",
+    "source": "https://eshram.gov.in"
+  }
+]

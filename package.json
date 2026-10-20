@@ -1,0 +1,29 @@
+{
+  "name": "yojana-saathi",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Yojana Saathi: an AI agent that finds the government schemes a citizen qualifies for, explains why, and drafts the application.",
+  "engines": {
+    "node": ">=20.9"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node --test tests/engine.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.3.8",
+    "pdfjs-dist": "^6.3.289",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}

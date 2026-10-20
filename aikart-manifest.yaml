@@ -1,0 +1,44 @@
+# aiKart Agent Manifest (apiVersion aikart.dev/v1), submission Method 1.
+# Before uploading: build and push the image (see README, "Submit on aiKart"), then replace YOUR_DOCKERHUB_USERNAME.
+apiVersion: aikart.dev/v1
+kind: AgentManifest
+
+metadata:
+  name: yojana-saathi
+  displayName: "Yojana Saathi"
+  description: "Finds the Indian government schemes you qualify for, explains why, and drafts the application"
+
+runtime:
+  type: docker
+  image: "docker.io/YOUR_DOCKERHUB_USERNAME/yojana-saathi:1.0.0"
+
+resources:
+  cpu: 1
+  memoryMb: 512
+  timeoutSeconds: 60
+
+inputs:
+  - name: situation
+    label: "Describe your situation in your own words (age, state, village or city, work, family income, ration card)"
+    type: textarea
+    required: true
+  - name: language
+    label: "Reply language"
+    type: select
+    required: false
+    options: ["English", "हिंदी"]
+    default: "English"
+  - name: pincode
+    label: "PIN code (optional)"
+    type: text
+    required: false
+
+output:
+  format: markdown
+
+security:
+  # The agent works fully offline (rule-based understanding + rule engine), so no egress is needed.
+  # To enable the live PIN-code lookup, switch to:
+  #   networkEgress: allowlist
+  #   egressAllowlist: ["api.postalpincode.in"]
+  networkEgress: none
